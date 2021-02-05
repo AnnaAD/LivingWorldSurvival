@@ -59,14 +59,14 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
         if(evd.button == PointerEventData.InputButton.Right)
         {
             inventory.removeItem(item);
-            Instantiate(item.getPickup(), GameObject.Find("Player").transform.position, Quaternion.identity);
+            Instantiate(item.getPickup(), GameObject.Find("Player").transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
             return;
         }
 
         if(item.itemType == Item.ItemType.Tent)
         {
             inventory.removeItem(item);
-            Instantiate(item.getDeployedTent(), GameObject.Find("Player").transform.position, Quaternion.identity);
+            Instantiate(item.getDeployedTent(), GameObject.Find("Player").transform.position, item.getDeployedTent().transform.rotation);
         }
 
         if (item.itemType == Item.ItemType.Mushroom || item.itemType == Item.ItemType.Meat)
