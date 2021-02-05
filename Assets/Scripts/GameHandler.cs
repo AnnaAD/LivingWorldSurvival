@@ -8,7 +8,6 @@ public class GameHandler : MonoBehaviour{
     
     private void Start(){
     	HealthSystem healthSystem = new HealthSystem(100);
-        Debug.Log(healthBar);
     	healthBar.Setup(healthSystem);
 
     	Debug.Log("Health: " + healthSystem.GetHealthPercent());
