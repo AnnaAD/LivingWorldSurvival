@@ -8,7 +8,7 @@ public class SleepController : MonoBehaviour
     [SerializeField] private RuntimeAnimatorController sleepController;
     private RuntimeAnimatorController defaultController;
     private Animator anim;
-    private bool sleeping;
+    public bool sleeping;
     private GameObject player;
     // Start is called before the first frame update
     void Start()
