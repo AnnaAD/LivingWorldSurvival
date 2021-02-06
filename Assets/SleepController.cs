@@ -10,11 +10,13 @@ public class SleepController : MonoBehaviour
     private RuntimeAnimatorController defaultController;
     private Animator anim;
     private bool sleeping;
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         defaultController = anim.runtimeAnimatorController;
+
     }
 
     // Update is called once per frame
