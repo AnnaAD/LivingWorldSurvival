@@ -69,6 +69,14 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
             Instantiate(item.getDeployedTent(), GameObject.Find("Player").transform.position, item.getDeployedTent().transform.rotation);
         }
 
+        if (item.itemType == Item.ItemType.Knife)
+        {
+            Debug.Log(GameObject.Find("Palm.R"));
+            GameObject knife = Instantiate(item.getWeapon(), GameObject.Find("Fingers.R").transform.position, GameObject.Find("Player").transform.rotation) as GameObject;
+            knife.transform.parent = GameObject.Find("Palm.R").transform;
+            inventory.removeItem(item);
+        }
+
         if (item.itemType == Item.ItemType.Mushroom || item.itemType == Item.ItemType.Meat)
         {
             inventory.removeItem(item);

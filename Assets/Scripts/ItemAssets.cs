@@ -30,5 +30,6 @@ public class ItemAssets : MonoBehaviour
 
     public GameObject deployedTent;
     public GameObject deployedFire;
+    public GameObject knifeWeapon;
 
 }
