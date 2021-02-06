@@ -12,6 +12,7 @@ public class Item
         Meat,
         Matches,
         Tent,
+        Knife
     }
 
     public ItemType itemType;
@@ -29,7 +30,7 @@ public class Item
             case Item.ItemType.Meat: return ItemAssets.Instance.meatSprite;
             case Item.ItemType.Matches: return ItemAssets.Instance.matchesSprite;
             case Item.ItemType.Tent: return ItemAssets.Instance.tentSprite;
-
+            case Item.ItemType.Knife: return ItemAssets.Instance.knifeSprite;
 
         }
 
@@ -46,8 +47,7 @@ public class Item
             case Item.ItemType.Meat: return ItemAssets.Instance.meatPrefab;
             case Item.ItemType.Matches: return ItemAssets.Instance.matchesPrefab;
             case Item.ItemType.Tent: return ItemAssets.Instance.tentPrefab;
-
-
+            case Item.ItemType.Knife: return ItemAssets.Instance.knifePrefab;
         }
 
     }
@@ -72,5 +72,10 @@ public class Item
     public GameObject getDeployedTent()
     {
         return ItemAssets.Instance.deployedTent;
+    }
+
+    public GameObject getWeapon()
+    {
+        return ItemAssets.Instance.knifeWeapon;
     }
 }
