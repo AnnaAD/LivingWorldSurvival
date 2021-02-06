@@ -126,21 +126,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a63ac733c6d463a81ec256f790b7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stickSprite: {fileID: 0}
+  stickSprite: {fileID: 21300000, guid: 4a3c822ca641a4edd90b29881a5fc97c, type: 3}
   stoneSprite: {fileID: 0}
   mushroomSprite: {fileID: 21300000, guid: a3b25569b652a459a8b933dc327ad912, type: 3}
   meatSprite: {fileID: 0}
-  matchesSprite: {fileID: 0}
-  tentSprite: {fileID: 0}
-  stickPrefab: {fileID: 0}
+  matchesSprite: {fileID: 21300000, guid: 97aed102caa824fa98ebc6de942cf05d, type: 3}
+  tentSprite: {fileID: 21300000, guid: feba585b6c504442f8f2f70c7125ae5a, type: 3}
+  stickPrefab: {fileID: 6972806023442343374, guid: 9cabe8c0658674bea81543594f5c8e4a,
+    type: 3}
   stonePrefab: {fileID: 0}
   mushroomPrefab: {fileID: 4385080170328260021, guid: ff62b58c5a9ea164fa8ddf8038e10cd1,
     type: 3}
   meatPrefab: {fileID: 0}
-  matchesPrefab: {fileID: 0}
-  tentPrefab: {fileID: 0}
-  deployedTent: {fileID: 0}
-  deployedFire: {fileID: 0}
+  matchesPrefab: {fileID: 4024565476417536640, guid: 8d7fe691a6ed6498489dafecff0eb35f,
+    type: 3}
+  tentPrefab: {fileID: 8145874542912937291, guid: c556eb57b0cee4621aa127e4fd77c6b8,
+    type: 3}
+  deployedTent: {fileID: 7132460616424129135, guid: e3b37da6a9f794fdca27be8edbfac47a,
+    type: 3}
+  deployedFire: {fileID: 4001340126084872209, guid: 6066074c1d5ec4f61b31d3daaa154159,
+    type: 3}
 --- !u!1 &2417799318775335301
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -697,7 +702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
