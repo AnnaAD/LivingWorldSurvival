@@ -6,6 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+<<<<<<< Updated upstream
     path: Assets/Scenes/PlayerCreation.unity
     guid: ef766a005b12546f8aef367a99743f8c
+=======
+    path: Assets/Scenes/Menu.unity
+    guid: df8c3db2e6710418f90751a5a6215814
+  - enabled: 1
+    path: Assets/Scenes/Island.unity
+    guid: d9defea22d415451db23857af06c4396
+>>>>>>> Stashed changes
   m_configObjects: {}
