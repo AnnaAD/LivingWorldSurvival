@@ -5,7 +5,7 @@ using UnityEngine;
 public class SheepController : MonoBehaviour
 {
     private HealthSystem health;
-    private GameObject drop;
+    [SerializeField] private GameObject drop;
     // Start is called before the first frame update
     void Start()
     {
