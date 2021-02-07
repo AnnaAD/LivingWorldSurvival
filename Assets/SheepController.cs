@@ -43,6 +43,7 @@ public class SheepController : MonoBehaviour
 
         rb.velocity = transform.forward * 3f;
 
+        Debug.Log(rb.velocity.magnitude);
         animator.SetFloat("Speed", rb.velocity.magnitude);
 
 
