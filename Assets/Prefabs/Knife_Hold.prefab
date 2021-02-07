@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 4830757665261694154}
   - component: {fileID: 8405290399494841199}
   - component: {fileID: 5999182127524272037}
+  - component: {fileID: 8211632745313002581}
+  - component: {fileID: 5239812122980220267}
   m_Layer: 0
   m_Name: Knife_Hold
-  m_TagString: Untagged
+  m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,3 +86,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8211632745313002581
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5206614357334259312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0035072179, y: 0.00015645199, z: 0.0048597744}
+  m_Center: {x: -0.00004624574, y: 1.7857931e-17, z: 0.001698799}
+--- !u!114 &5239812122980220267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5206614357334259312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f152d552e135a47dcbac1ee04673097f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
