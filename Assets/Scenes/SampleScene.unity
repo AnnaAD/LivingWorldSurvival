@@ -795,6 +795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sleepController: {fileID: 9100000, guid: 53aed3ace2a7348198ce5eae45fe9578, type: 2}
+  sleeping: 0
 --- !u!1 &150783340
 GameObject:
   m_ObjectHideFlags: 0
@@ -5520,7 +5521,7 @@ PrefabInstance:
     - target: {fileID: 7946339279237246682, guid: ee65eeee7eeaf4b9da49295511f94536,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.04
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 7946339279237246682, guid: ee65eeee7eeaf4b9da49295511f94536,
         type: 3}
