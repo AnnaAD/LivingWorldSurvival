@@ -23,10 +23,10 @@ public class SheepController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(health.GetHealth());
+        //Debug.Log(health.GetHealth());
         if(health.GetHealth() <= 0)
         {
-            Debug.Log("die");
+            //Debug.Log("die");
             Destroy(this.gameObject);
             Instantiate(drop, transform.position, Quaternion.identity);
         }
@@ -43,7 +43,7 @@ public class SheepController : MonoBehaviour
 
         rb.velocity = transform.forward * 3f;
 
-        Debug.Log(rb.velocity.magnitude);
+        //Debug.Log(rb.velocity.magnitude);
         animator.SetFloat("Speed", rb.velocity.magnitude);
 
 
