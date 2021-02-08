@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class SleepController : MonoBehaviour
@@ -8,7 +9,7 @@ public class SleepController : MonoBehaviour
     [SerializeField] private RuntimeAnimatorController sleepController;
     private RuntimeAnimatorController defaultController;
     private Animator anim;
-    public bool sleeping;
+    private bool sleeping;
     private GameObject player;
     // Start is called before the first frame update
     void Start()

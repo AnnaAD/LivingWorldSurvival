@@ -69,14 +69,6 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
             Instantiate(item.getDeployedTent(), GameObject.Find("Player").transform.position, item.getDeployedTent().transform.rotation);
         }
 
-        if (item.itemType == Item.ItemType.Knife)
-        {
-            Debug.Log(GameObject.Find("Palm.R"));
-            GameObject knife = Instantiate(item.getWeapon(), RecursiveFindChild(GameObject.Find("Player").transform, "Fingers.R").transform.position, GameObject.Find("Player").transform.rotation) as GameObject;
-            knife.transform.parent = RecursiveFindChild(GameObject.Find("Player").transform, "Palm.R");
-            inventory.removeItem(item);
-        }
-
         if (item.itemType == Item.ItemType.Mushroom || item.itemType == Item.ItemType.Meat)
         {
             inventory.removeItem(item);
@@ -95,25 +87,5 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
     public void OnSelect(BaseEventData evd)
     {
         Debug.Log("OnSelect");
-    }
-
-    Transform RecursiveFindChild(Transform parent, string childName)
-    {
-        foreach (Transform child in parent)
-        {
-            if (child.name == childName)
-            {
-                return child;
-            }
-            else
-            {
-                Transform found = RecursiveFindChild(child, childName);
-                if (found != null)
-                {
-                    return found;
-                }
-            }
-        }
-        return null;
     }
 }

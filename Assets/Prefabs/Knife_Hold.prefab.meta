@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scenes/Island.meta
+guid: 84e8454f9f783442c9ca20fef819f442
+folderAsset: yes
+DefaultImporter:
+=======
 guid: 6563e3e67c66d426591e2d2eb678d608
 PrefabImporter:
+>>>>>>> b9c93054c96407a74655d7d9041712d137b3258e:Assets/Prefabs/Knife_Hold.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

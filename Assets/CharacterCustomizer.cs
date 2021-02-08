@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CharacterCustomizer : MonoBehaviour
 {
@@ -9,23 +8,22 @@ public class CharacterCustomizer : MonoBehaviour
     [SerializeField] private GameObject[] players;
     private int playerIndex = 0;
     private GameObject player;
-
     [SerializeField] private GameObject uiPanel;
     [SerializeField] private GameObject slider;
-    [SerializeField] private Slider characterSlide;
-
-    private List<GameObject> oldList;
+    [SerializeField] private List<GameObject> oldList;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         oldList = new List<GameObject>();
         CreateMaterialCustomizer();
-
-        characterSlide.minValue = 0;
-        characterSlide.maxValue = players.Length-1;
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 
     private void CreateMaterialCustomizer()
     {

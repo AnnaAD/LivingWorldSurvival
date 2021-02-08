@@ -10,8 +10,6 @@ public class PlayerStats : MonoBehaviour
 
     public HealthSystem health;
 
-    public bool sleeping;
-
 
 	public float hunger_counter;
     public float tired_counter;
@@ -34,29 +32,16 @@ public class PlayerStats : MonoBehaviour
             }
         }
 
-        if (sleeping)
+        if(tired_counter > 10)
         {
-            if (tired_counter > 10)
-            {
-                tired += 2;
-                tired_counter = 0;
-            }
-        } else
-        {
-            if (tired_counter > 30)
-            {
-                tired -= 1;
-                tired_counter = 0;
+            tired -= 1;
+            tired_counter = 0;
 
-                if (tired < 1)
-                {
-                    health.Damage(1);
-                }
+            if(tired < 1)
+            {
+                health.Damage(1);
             }
         }
-        
-
-        
 
         if(tired > 10) { tired = 10; }
         if(hunger > 10) { hunger = 10; }
@@ -65,8 +50,6 @@ public class PlayerStats : MonoBehaviour
 
         HungerText.text = "Hunger: " + hunger;
         TiredText.text = "Tired: " + tired;
-
-        sleeping = GetComponent<SleepController>().sleeping;
 
     }
 
