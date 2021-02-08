@@ -21,14 +21,16 @@ public class AttackController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             anim.runtimeAnimatorController = attackController;
             GetComponent<vThirdPersonInput>().enabled = false;
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        }
        
-        } else {
+        if(Input.GetMouseButtonUp(0)) {
+
                     anim.runtimeAnimatorController = defaultController;
             GetComponent<vThirdPersonInput>().enabled = true;
 
