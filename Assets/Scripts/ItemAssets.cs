@@ -17,6 +17,8 @@ public class ItemAssets : MonoBehaviour
     public Sprite meatSprite;
     public Sprite matchesSprite;
     public Sprite tentSprite;
+    public Sprite knifeSprite;
+
 
     public GameObject stickPrefab;
     public GameObject stonePrefab;
@@ -24,8 +26,10 @@ public class ItemAssets : MonoBehaviour
     public GameObject meatPrefab;
     public GameObject matchesPrefab;
     public GameObject tentPrefab;
+    public GameObject knifePrefab;
 
     public GameObject deployedTent;
     public GameObject deployedFire;
+    public GameObject knifeWeapon;
 
 }
