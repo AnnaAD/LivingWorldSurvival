@@ -25,6 +25,10 @@ public class controlNPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      IdleWalk();
+    }
+
+    public void IdleWalk(){
       float dist = Vector3.Distance(player.position, transform.position);
       if(dist< 4){
         Debug.Log(dist);
@@ -37,7 +41,7 @@ public class controlNPC : MonoBehaviour
       timer += Time.deltaTime;
 
       if (timer >= wanderTimer) {
-        Vector3 newPos = GetRandomPoint(center, 30f);
+        Vector3 newPos = GetRandomPoint(center, 50f);
         agent.SetDestination(newPos);
         timer = 0;
       }
