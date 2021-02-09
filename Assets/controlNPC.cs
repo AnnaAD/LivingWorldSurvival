@@ -26,6 +26,7 @@ public class controlNPC : MonoBehaviour
     void Update()
     {
       IdleWalk();
+
     }
 
     void IdleWalk(){
@@ -44,7 +45,6 @@ public class controlNPC : MonoBehaviour
 
       if(agent.isStopped == false){
           animator.SetBool("walk", true);
-          // timer = 0;
       }else{
           Vector3 newPos = GetRandomPoint(center, 5f);
           agent.SetDestination(newPos);
@@ -56,6 +56,10 @@ public class controlNPC : MonoBehaviour
         agent.isStopped = true;
         timer = 0;
       }
+
+    }
+
+    void GoToSleep(){
     }
 
     public Vector3 GetRandomPoint(Vector3 center, float maxDistance) {
