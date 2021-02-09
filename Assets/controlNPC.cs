@@ -10,7 +10,7 @@ public class controlNPC : MonoBehaviour
     // public int waitingCounter = 500;
     public Vector3 center;
     public UnityEngine.AI.NavMeshAgent agent;
-    public float wanderTimer;
+    public float waitTimer;
     private float timer;
     public Rigidbody player;
     public Rigidbody npc;
@@ -19,7 +19,7 @@ public class controlNPC : MonoBehaviour
     void Start()
     {
       animator = GetComponent<Animator>();
-      timer = wanderTimer;
+      timer = waitTimer;
     }
 
     // Update is called once per frame
@@ -28,38 +28,43 @@ public class controlNPC : MonoBehaviour
       IdleWalk();
     }
 
-    public void IdleWalk(){
+    void IdleWalk(){
+      if (timer < waitTimer) {
+        timer += Time.deltaTime;
+        return;
+      }
+
       float dist = Vector3.Distance(player.position, transform.position);
       if(dist< 4){
         animator.SetBool("walk", false);
         agent.isStopped = true;
-        timer = wanderTimer;
+        transform.LookAt(player.transform);
         return;
       }
 
-      timer += Time.deltaTime;
-
-      if (timer >= wanderTimer) {
-        Vector3 newPos = GetRandomPoint(center, 50f);
-        agent.SetDestination(newPos);
-        timer = 0;
+      if(agent.isStopped == false){
+          animator.SetBool("walk", true);
+          // timer = 0;
+      }else{
+          Vector3 newPos = GetRandomPoint(center, 5f);
+          agent.SetDestination(newPos);
+          agent.isStopped = false;
       }
 
-      if(agent.velocity.magnitude > 0){
-          animator.SetBool("walk", true);
-      }else{
+      if(agent.remainingDistance <= agent.stoppingDistance){
         animator.SetBool("walk", false);
+        agent.isStopped = true;
+        timer = 0;
       }
     }
 
     public Vector3 GetRandomPoint(Vector3 center, float maxDistance) {
         // Get Random Point inside Sphere which position is center, radius is maxDistance
         // Vector3 randomPos = Random.insideUnitSphere * maxDistance + center;
-        Vector3 randomPos = new Vector3(transform.position.x + Random.Range(-20.0f, 20.0f), transform.position.y + Random.Range(-20.0f, 20.0f), transform.position.z + Random.Range(-20.0f, 20.0f));
+        Vector3 randomPos = new Vector3(center.x + Random.Range(-30.0f, 30.0f), center.y, center.z + Random.Range(-30.0f, 30.0f));
         UnityEngine.AI.NavMeshHit hit; // NavMesh Sampling Info Container
         // from randomPos find a nearest point on NavMesh surface in range of maxDistance
         UnityEngine.AI.NavMesh.SamplePosition(randomPos, out hit, maxDistance, UnityEngine.AI.NavMesh.AllAreas);
-
         return hit.position;
     }
 
