@@ -20,7 +20,7 @@ public class PlayerAnimationSounds : MonoBehaviour
     }
 
     private void PlayerFootstepSound() {
-        animationSoundPlayer.pitch = Random.Range(.8f, 1.2f);
+        animationSoundPlayer.pitch = Random.RandomRange(.8f, 1.2f);
     	animationSoundPlayer.Play();
     }
 }

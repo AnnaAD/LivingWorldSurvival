@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,11 +25,14 @@ public class controlNPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      IdleWalk();
+    }
+
+    public void IdleWalk(){
       float dist = Vector3.Distance(player.position, transform.position);
       if(dist< 4){
-        Debug.Log(dist);
         animator.SetBool("walk", false);
-        agent.SetDestination(npc.position);
+        agent.isStopped = true;
         timer = wanderTimer;
         return;
       }
@@ -37,21 +40,22 @@ public class controlNPC : MonoBehaviour
       timer += Time.deltaTime;
 
       if (timer >= wanderTimer) {
-        Vector3 newPos = GetRandomPoint(center, 30f);
+        Vector3 newPos = GetRandomPoint(center, 50f);
         agent.SetDestination(newPos);
         timer = 0;
       }
 
-      if(agent.remainingDistance == 0){
-        animator.SetBool("walk", false);
+      if(agent.velocity.magnitude > 0){
+          animator.SetBool("walk", true);
       }else{
-        animator.SetBool("walk", true);
+        animator.SetBool("walk", false);
       }
     }
 
-    public static Vector3 GetRandomPoint(Vector3 center, float maxDistance) {
+    public Vector3 GetRandomPoint(Vector3 center, float maxDistance) {
         // Get Random Point inside Sphere which position is center, radius is maxDistance
-        Vector3 randomPos = Random.insideUnitSphere * maxDistance + center;
+        // Vector3 randomPos = Random.insideUnitSphere * maxDistance + center;
+        Vector3 randomPos = new Vector3(transform.position.x + Random.Range(-20.0f, 20.0f), transform.position.y + Random.Range(-20.0f, 20.0f), transform.position.z + Random.Range(-20.0f, 20.0f));
         UnityEngine.AI.NavMeshHit hit; // NavMesh Sampling Info Container
         // from randomPos find a nearest point on NavMesh surface in range of maxDistance
         UnityEngine.AI.NavMesh.SamplePosition(randomPos, out hit, maxDistance, UnityEngine.AI.NavMesh.AllAreas);

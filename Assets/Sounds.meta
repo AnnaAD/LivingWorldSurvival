@@ -1,14 +1,8 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Scenes/Island/NavMesh.asset.meta
-guid: 60c7ab5db7e5a4104af2be0b42c30ce4
-NativeFormatImporter:
-=======
 guid: f5d7df700d57a4cb09b061bd6b799229
 folderAsset: yes
 DefaultImporter:
->>>>>>> b9c93054c96407a74655d7d9041712d137b3258e:Assets/Sounds.meta
   externalObjects: {}
-  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
