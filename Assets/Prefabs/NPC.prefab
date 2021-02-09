@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 3670624195667666693}
   - component: {fileID: 3670624195667666692}
   m_Layer: 0
-  m_Name: Female_Alternative_fixed
+  m_Name: NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -812,7 +812,7 @@ NavMeshAgent:
   m_StoppingDistance: 10
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
-  m_AutoRepath: 1
+  m_AutoRepath: 0
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 1

@@ -39,7 +39,7 @@ public class controlNPC : MonoBehaviour
       if(dist< 4){
         animator.SetBool("walk", false);
         agent.isStopped = true;
-        transform.LookAt(player.transform);
+        // transform.LookAt(player.transform);
         return;
       }
 
