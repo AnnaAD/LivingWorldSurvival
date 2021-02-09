@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class PlayerPickup : MonoBehaviour
 {
-    private Inventory inventory;
-    [SerializeField] private UI_Inventory ui_inventory;
+    public Inventory inventory;
+    [SerializeField] private UI_Inventory ui_inventory = null;
     // Start is called before the first frame update
     void Start()
     {
         inventory = new Inventory();
-        ui_inventory.setInventory(inventory);
+        if(ui_inventory != null)
+        {
+            ui_inventory.setInventory(inventory);
+        }
     }
 
     // Update is called once per frame
@@ -24,7 +27,10 @@ public class PlayerPickup : MonoBehaviour
         if (collision.transform.tag.Equals("Pickup"))
         {
             inventory.addItem(collision.gameObject.GetComponent<Pickup>().getItem());
-            ui_inventory.setInventory(inventory);
+            if (ui_inventory != null)
+            {
+                ui_inventory.setInventory(inventory);
+            }
             Destroy(collision.gameObject);
         }
     }

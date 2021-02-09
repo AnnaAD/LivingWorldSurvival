@@ -16,8 +16,8 @@ public class PlayerStats : MonoBehaviour
 	public float hunger_counter;
     public float tired_counter;
 
-    public Text HungerText;
-    public Text TiredText;
+    public Text HungerText = null;
+    public Text TiredText = null;
 
     void Update()
 	{
@@ -63,10 +63,10 @@ public class PlayerStats : MonoBehaviour
         if(tired < 0) { tired = 0; }
         if (hunger < 0) { hunger = 0; }
 
-        HungerText.text = "Hunger: " + hunger;
-        TiredText.text = "Tired: " + tired;
-
-        sleeping = GetComponent<SleepController>().sleeping;
+        if (HungerText != null && TiredText != null) {
+            HungerText.text = "Hunger: " + hunger;
+            TiredText.text = "Tired: " + tired;
+        }
 
     }
 

@@ -10,6 +10,8 @@ public class InventoryController : MonoBehaviour
     void Start()
     {
         toggleInventory = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -18,19 +20,20 @@ public class InventoryController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             toggleInventory = !toggleInventory;
+            if (!toggleInventory)
+            {
+
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+
+            }
+            else
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
         ui_inventory.gameObject.SetActive(toggleInventory);
-
-        if(!toggleInventory)
-        {
-          
-             Cursor.visible = false;
-             Cursor.lockState = CursorLockMode.Locked;
-            
-        } else
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
+        
     }
 }
