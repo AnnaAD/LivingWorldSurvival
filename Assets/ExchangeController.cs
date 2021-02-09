@@ -13,7 +13,6 @@ public class ExchangeController : MonoBehaviour
     void Start()
     {
         toggleInventory = false;
-        pInventory = GameObject.Find("Player").GetComponent<PlayerPickup>().inventory;
         npcInventory = null;
     }
     
@@ -26,10 +25,11 @@ public class ExchangeController : MonoBehaviour
             toggleInventory = !toggleInventory;
             Vector3 p1 = GameObject.Find("Player").transform.position;
             float distanceToObstacle = 0;
-            RaycastHit[] hit = Physics.SphereCastAll(p1, 20, GameObject.Find("Player").transform.forward, 20);
+            RaycastHit[] hit = Physics.SphereCastAll(p1, 4f, GameObject.Find("Player").transform.forward, 4f);
 
 
-     
+
+            npcInventory = null;
             if (toggleInventory && hit.Length > 0)
             {
                 foreach ( RaycastHit r in hit)
@@ -58,6 +58,7 @@ public class ExchangeController : MonoBehaviour
             {
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
+                pInventory = GameObject.Find("Player").GetComponent<PlayerPickup>().inventory;
 
                 npc_inventory.GetComponent<UI_Inventory>().setInventory(npcInventory);
                 player_inventory.GetComponent<UI_Inventory>().setInventory(pInventory);
