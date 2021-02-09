@@ -18,12 +18,23 @@ public class RandomColor : MonoBehaviour
         {
             if (m.name.Contains("Skin"))
             {
-                m.color = Color.HSVToRGB(Random.RandomRange(11f, 15f)/100f, Random.RandomRange(40, 70f)/100f, Random.RandomRange(50f, 95f)/100f);
-                Debug.Log(m.color);
+                float scale = Random.Range(0.0f,1.0f);
+                float hue = Random.RandomRange(0.05f, .137f);
+                float s = (.73f-.35f)*scale + .35f;
+                float v = (1.0f - .24f) * (1-scale) + .24f; 
+
+
+                m.color = Color.HSVToRGB(hue, s, v);
             }
             else if (m.name.Contains("Hair"))
             {
-                m.color = Color.HSVToRGB(Random.RandomRange(11f, 20f) / 100f, Random.RandomRange(40, 70f) / 100f, Random.RandomRange(0f, 95f) / 100f);
+                float scale = Random.Range(0.0f, 1.0f);
+                float hue = Random.RandomRange(0.04f, .14f);
+                float s = (.73f - .35f) * scale + .35f;
+                float v = (1.0f - .00f) * (1 - scale) + .00f;
+
+
+                m.color = Color.HSVToRGB(hue, s, v);
             }
             else
             {
