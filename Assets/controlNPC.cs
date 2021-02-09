@@ -14,7 +14,8 @@ public class controlNPC : MonoBehaviour
     private float timer;
     public Rigidbody player;
     public Rigidbody npc;
-
+    public float rotationSpeed = 200f;
+    public bool facing = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,9 +40,15 @@ public class controlNPC : MonoBehaviour
       if(dist< 4){
         animator.SetBool("walk", false);
         agent.isStopped = true;
-        // transform.LookAt(player.transform);
+        if(facing == false){
+          transform.LookAt(player.transform);
+          facing = true;
+          // RotateTowards(player.transform);
+        }
         return;
       }
+
+      facing = false;
 
       if(agent.isStopped == false){
           animator.SetBool("walk", true);
@@ -60,7 +67,14 @@ public class controlNPC : MonoBehaviour
     }
 
     void GoToSleep(){
+
     }
+
+    public void RotateTowards(Transform target) {
+            Vector3 direction = (target.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+     }
 
     public Vector3 GetRandomPoint(Vector3 center, float maxDistance) {
         // Get Random Point inside Sphere which position is center, radius is maxDistance
