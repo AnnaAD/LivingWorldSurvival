@@ -740,7 +740,7 @@ GameObject:
   - component: {fileID: 2134243114}
   m_Layer: 0
   m_Name: NPC
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -850,6 +850,8 @@ MonoBehaviour:
   waitTimer: 2
   player: {fileID: 0}
   npc: {fileID: 3670624195667666695}
+  rotationSpeed: 200
+  facing: 0
 --- !u!114 &2134243113
 MonoBehaviour:
   m_ObjectHideFlags: 0
