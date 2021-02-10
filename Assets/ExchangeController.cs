@@ -15,7 +15,7 @@ public class ExchangeController : MonoBehaviour
         toggleInventory = false;
         npcInventory = null;
     }
-    
+
 
     // Update is called once per frame
     void Update()
@@ -37,7 +37,7 @@ public class ExchangeController : MonoBehaviour
                     if(r.collider.tag == "NPC")
                     {
                         Debug.Log("found NPC");
-                        npcInventory = r.collider.gameObject.GetComponent<PlayerPickup>().inventory;
+                        npcInventory = r.collider.gameObject.GetComponent<controlNPC>().inventory;
                     }
                 }
             }
@@ -67,7 +67,7 @@ public class ExchangeController : MonoBehaviour
         player_inventory.gameObject.SetActive(toggleInventory);
         npc_inventory.gameObject.SetActive(toggleInventory);
 
-        
+
 
 
     }

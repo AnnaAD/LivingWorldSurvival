@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 3670624195667666693}
   - component: {fileID: 3670624195667666692}
   - component: {fileID: 2134243113}
-  - component: {fileID: 2134243114}
+  - component: {fileID: 3990782936038300533}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -824,7 +824,7 @@ NavMeshAgent:
   m_Acceleration: 5
   avoidancePriority: 50
   m_AngularSpeed: 90
-  m_StoppingDistance: 3
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 0
@@ -852,6 +852,9 @@ MonoBehaviour:
   npc: {fileID: 3670624195667666695}
   rotationSpeed: 200
   facing: 0
+  mode: find food
+  enroute: 0
+  closest: {fileID: 0}
 --- !u!114 &2134243113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -871,18 +874,20 @@ MonoBehaviour:
   tired_counter: 0
   HungerText: {fileID: 0}
   TiredText: {fileID: 0}
---- !u!114 &2134243114
+--- !u!114 &3990782936038300533
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4481579242276436189}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd170d1963d2e4ba6a21daaa913e07b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 14ad33d34e8d242b09b473f0f70d19ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  animator: {fileID: 7177111540542945309}
   ui_inventory: {fileID: 0}
 --- !u!1 &4892133611412269045
 GameObject:

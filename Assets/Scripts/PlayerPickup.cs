@@ -33,5 +33,15 @@ public class PlayerPickup : MonoBehaviour
             }
             Destroy(collision.gameObject);
         }
+
+        if (collision.transform.tag.Equals("food"))
+        {
+            inventory.addItem(collision.gameObject.GetComponent<Pickup>().getItem());
+            if (ui_inventory != null)
+            {
+                ui_inventory.setInventory(inventory);
+            }
+            Destroy(collision.gameObject);
+        }
     }
 }

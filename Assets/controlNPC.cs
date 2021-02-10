@@ -16,19 +16,29 @@ public class controlNPC : MonoBehaviour
     public Rigidbody npc;
     public float rotationSpeed = 200f;
     public bool facing = false;
+    public string mode ="find food";
+    public bool enroute = false;
+    public  GameObject closest = null;
+    public Inventory inventory;
     // Start is called before the first frame update
     void Start()
     {
       animator = GetComponent<Animator>();
       timer = waitTimer;
+      inventory = new Inventory();
     }
 
     // Update is called once per frame
     void Update()
     {
-      IdleWalk();
+      if(mode == "idle"){
+          IdleWalk();
+      }else if(mode == "find food"){
+          FindFood();
+      }
 
     }
+
 
     void IdleWalk(){
       if (timer < waitTimer) {
@@ -65,6 +75,41 @@ public class controlNPC : MonoBehaviour
       }
 
     }
+
+
+    void FindFood(){
+      if(!enroute){
+        GameObject[] foods;
+        foods = GameObject.FindGameObjectsWithTag("food");
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        foreach (GameObject food in foods){
+            Vector3 diff = food.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance){
+                closest = food;
+                distance = curDistance;
+            }
+         }
+         agent.SetDestination(closest.transform.position);
+         animator.SetBool("walk", true);
+         enroute = true;
+      }
+
+      if(agent.remainingDistance <= agent.stoppingDistance){
+        animator.SetBool("walk", false);
+        animator.SetTrigger("pick up");
+        inventory.addItem(closest.GetComponent<Pickup>().getItem());
+        Destroy(closest);
+        closest = null;
+        agent.isStopped = true;
+        enroute = false;
+        mode = "idle";
+        timer = 0;
+      }
+
+    }
+
 
     void GoToSleep(){
 
