@@ -22,26 +22,20 @@ public class PlayerPickup : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
-        if (collision.transform.tag.Equals("Pickup"))
+        
+        if (collision.transform.tag.Equals("Pickup") || collision.transform.tag.Equals("food"))
         {
-            inventory.addItem(collision.gameObject.GetComponent<Pickup>().getItem());
-            if (ui_inventory != null)
+            if(Input.GetKey(KeyCode.Return))
             {
-                ui_inventory.setInventory(inventory);
+                inventory.addItem(collision.gameObject.GetComponent<Pickup>().getItem());
+                if (ui_inventory != null)
+                {
+                    ui_inventory.setInventory(inventory);
+                }
+                Destroy(collision.gameObject);
             }
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.transform.tag.Equals("food"))
-        {
-            inventory.addItem(collision.gameObject.GetComponent<Pickup>().getItem());
-            if (ui_inventory != null)
-            {
-                ui_inventory.setInventory(inventory);
-            }
-            Destroy(collision.gameObject);
         }
     }
 }
