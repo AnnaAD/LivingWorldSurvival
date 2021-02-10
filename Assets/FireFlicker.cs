@@ -12,6 +12,7 @@ public class FireFlicker : MonoBehaviour
     private Light _lightSource;
     private float _baseIntensity;
     private bool _flickering;
+    private float _baseY;
 
     public void Reset()
     {
@@ -30,6 +31,7 @@ public class FireFlicker : MonoBehaviour
             return;
         }
         _baseIntensity = _lightSource.intensity;
+        _baseY = transform.localScale.z;
         StartCoroutine(DoFlicker());
     }
 
@@ -47,6 +49,8 @@ public class FireFlicker : MonoBehaviour
         while (!StopFlickering)
         {
             _lightSource.intensity = Mathf.Lerp(_lightSource.intensity, Random.Range(_baseIntensity - MaxReduction, _baseIntensity + MaxIncrease), Strength * Time.deltaTime);
+            transform.localScale = new Vector3( transform.localScale.x, transform.localScale.y, Mathf.Lerp(transform.localScale.z, Random.Range(_baseY - MaxReduction * 10, _baseY + MaxIncrease * 10), Strength * Time.deltaTime));
+
             yield return new WaitForSeconds(RateDamping);
         }
         _flickering = false;
