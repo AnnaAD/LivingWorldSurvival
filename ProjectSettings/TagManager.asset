@@ -7,6 +7,7 @@ TagManager:
   - Pickup
   - Damage
   - NPC
+  - food
   layers:
   - Default
   - TransparentFX

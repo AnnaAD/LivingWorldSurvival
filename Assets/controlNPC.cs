@@ -5,13 +5,12 @@ using UnityEngine;
 public class controlNPC : MonoBehaviour
 {
     public Animator animator;
-
-    // public bool isWalking = false;
-    // public int waitingCounter = 500;
     public Vector3 center;
     public UnityEngine.AI.NavMeshAgent agent;
+
     public float waitTimer;
     private float timer;
+
     public Rigidbody player;
     public Rigidbody npc;
     public float rotationSpeed = 200f;
@@ -96,20 +95,21 @@ public class controlNPC : MonoBehaviour
          enroute = true;
       }
 
-      if(agent.remainingDistance <= agent.stoppingDistance){
+      if(agent.remainingDistance <= agent.stoppingDistance +1){
         animator.SetBool("walk", false);
         animator.SetTrigger("pick up");
-        inventory.addItem(closest.GetComponent<Pickup>().getItem());
-        Destroy(closest);
-        closest = null;
         agent.isStopped = true;
         enroute = false;
         mode = "idle";
-        timer = 0;
+        timer = -5;
       }
 
     }
 
+    void addToInventory(){
+      inventory.addItem(closest.GetComponent<Pickup>().getItem());
+      Destroy(closest);
+    }
 
     void GoToSleep(){
 
