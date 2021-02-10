@@ -9,6 +9,7 @@ public class controlNPC : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent agent;
 
     public float waitTimer;
+    public float sleepTimer;
     private float timer;
 
     public Rigidbody player;
@@ -24,8 +25,9 @@ public class controlNPC : MonoBehaviour
     {
       animator = GetComponent<Animator>();
       timer = waitTimer;
+      sleepTimer = 0;
       inventory = new Inventory();
-      mode = "find food";
+      mode = "sleep";
       enroute = false;
     }
 
@@ -44,8 +46,6 @@ public class controlNPC : MonoBehaviour
 
 
     void IdleWalk(){
-      // animator.SetBool("sleep", false);
-
       if (timer < waitTimer) {
         timer += Time.deltaTime;
         return;
@@ -118,10 +118,19 @@ public class controlNPC : MonoBehaviour
     }
 
     void GoToSleep(){
-      animator.SetBool("walk", false);
-      animator.SetBool("sleep", true);
-      timer = -10;
-      mode = "idle";
+      if(sleepTimer == 0){
+        animator.SetBool("walk", false);
+        animator.SetBool("sleep", true);
+        Instantiate(ItemAssets.Instance.deployedTent, transform.position, ItemAssets.Instance.deployedTent.transform.rotation);
+      }
+
+      sleepTimer += Time.deltaTime;
+
+      if(sleepTimer > 10){
+        animator.SetBool("sleep", false);
+        sleepTimer = 0;
+        mode = "idle";
+      }
     }
 
     public void RotateTowards(Transform target) {
