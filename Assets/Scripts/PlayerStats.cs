@@ -9,6 +9,7 @@ public class PlayerStats : MonoBehaviour
 	public int tired = 10;
 
     public HealthSystem health;
+    [SerializeField] private int maxHealth;
 
     public bool sleeping;
 
@@ -18,6 +19,12 @@ public class PlayerStats : MonoBehaviour
 
     public Text HungerText = null;
     public Text TiredText = null;
+
+    private void Start()
+    {
+        health = new HealthSystem(maxHealth);
+        transform.Find("HealthBar").GetComponent<HealthBar>().Setup(health);
+    }
 
     void Update()
 	{

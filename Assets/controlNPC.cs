@@ -20,6 +20,9 @@ public class controlNPC : MonoBehaviour
     public bool enroute;
     public  GameObject closest = null;
     public Inventory inventory;
+
+    [SerializeField] private GameObject drop;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -147,6 +150,25 @@ public class controlNPC : MonoBehaviour
         // from randomPos find a nearest point on NavMesh surface in range of maxDistance
         UnityEngine.AI.NavMesh.SamplePosition(randomPos, out hit, maxDistance, UnityEngine.AI.NavMesh.AllAreas);
         return hit.position;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        HealthSystem health = GetComponent<PlayerStats>().health;
+        if (other.gameObject.tag == "Damage")
+        {
+            health.Damage(other.gameObject.GetComponent<DamageStats>().damage);
+            if (health.GetHealth() <= 0)
+            {
+                Destroy(this.gameObject);
+                Instantiate(drop, transform.position, Quaternion.identity);
+                foreach (Item i in inventory.GetItems())
+                {
+                    Instantiate(i.getPickup(), transform.position + new Vector3(Random.Range(-1f,1f), 0, Random.Range(-1f, 1f)), Quaternion.identity);
+                }
+            }
+        }
+
     }
 
 }
