@@ -284,6 +284,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7907473193466504575, guid: 7c1feb50ce67e4d97bcf4db548881e1f,
+        type: 3}
+      propertyPath: m_TagString
+      value: food
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c1feb50ce67e4d97bcf4db548881e1f, type: 3}
 --- !u!114 &374749604 stripped
@@ -888,6 +893,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7907473193466504575, guid: 7c1feb50ce67e4d97bcf4db548881e1f,
+        type: 3}
+      propertyPath: m_TagString
+      value: food
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c1feb50ce67e4d97bcf4db548881e1f, type: 3}
 --- !u!1001 &810574982
@@ -1451,7 +1461,8 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: 0fc5c014b96f449eb9c610722cd1c807, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3990782936038300533, guid: 4a9de78b40fc2449bbf91051ebdf1354, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4a9de78b40fc2449bbf91051ebdf1354, type: 3}
 --- !u!1 &1449134022
 GameObject:
@@ -1692,6 +1703,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mushroom_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907473193466504575, guid: 7c1feb50ce67e4d97bcf4db548881e1f,
+        type: 3}
+      propertyPath: m_TagString
+      value: food
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c1feb50ce67e4d97bcf4db548881e1f, type: 3}
@@ -2171,6 +2187,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7907473193466504575, guid: 7c1feb50ce67e4d97bcf4db548881e1f,
+        type: 3}
+      propertyPath: m_TagString
+      value: food
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c1feb50ce67e4d97bcf4db548881e1f, type: 3}
 --- !u!1 &1735113779880511111 stripped
@@ -2198,6 +2219,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2134243113, guid: 4a9de78b40fc2449bbf91051ebdf1354, type: 3}
+      propertyPath: sleeping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3670624195667666692, guid: 4a9de78b40fc2449bbf91051ebdf1354,
         type: 3}
       propertyPath: player
@@ -2268,7 +2293,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2134243114, guid: 4a9de78b40fc2449bbf91051ebdf1354, type: 3}
+    - {fileID: 3990782936038300533, guid: 4a9de78b40fc2449bbf91051ebdf1354, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4a9de78b40fc2449bbf91051ebdf1354, type: 3}
 --- !u!1001 &5823957036059428768
 PrefabInstance:
@@ -2430,6 +2457,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Steak
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824870279236398300, guid: 337572fe3dfbf4e48bf3a58ad1e8b9bc,
+        type: 3}
+      propertyPath: m_TagString
+      value: food
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 337572fe3dfbf4e48bf3a58ad1e8b9bc, type: 3}

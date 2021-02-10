@@ -15,8 +15,8 @@ public class controlNPC : MonoBehaviour
     public Rigidbody npc;
     public float rotationSpeed = 200f;
     public bool facing = false;
-    public string mode ="find food";
-    public bool enroute = false;
+    public string mode;
+    public bool enroute;
     public  GameObject closest = null;
     public Inventory inventory;
     // Start is called before the first frame update
@@ -25,6 +25,8 @@ public class controlNPC : MonoBehaviour
       animator = GetComponent<Animator>();
       timer = waitTimer;
       inventory = new Inventory();
+      mode = "find food";
+      enroute = false;
     }
 
     // Update is called once per frame
@@ -34,12 +36,16 @@ public class controlNPC : MonoBehaviour
           IdleWalk();
       }else if(mode == "find food"){
           FindFood();
+      }else if(mode == "sleep"){
+          GoToSleep();
       }
 
     }
 
 
     void IdleWalk(){
+      // animator.SetBool("sleep", false);
+
       if (timer < waitTimer) {
         timer += Time.deltaTime;
         return;
@@ -112,7 +118,10 @@ public class controlNPC : MonoBehaviour
     }
 
     void GoToSleep(){
-
+      animator.SetBool("walk", false);
+      animator.SetBool("sleep", true);
+      timer = -10;
+      mode = "idle";
     }
 
     public void RotateTowards(Transform target) {
