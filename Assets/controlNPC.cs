@@ -30,7 +30,7 @@ public class controlNPC : MonoBehaviour
       timer = waitTimer;
       sleepTimer = 0;
       inventory = new Inventory();
-      mode = "find food";
+      // mode = "find food";
       enroute = false;
     }
 
