@@ -22,15 +22,15 @@ public class UI_Inventory : MonoBehaviour
     {
         this.itemContainer = transform.Find("ItemSlotContainer");
         this.itemSlot = itemContainer.Find("ItemSlot");
-        itemSlot.gameObject.active = false;
-        popUp.active = false;
+        itemSlot.gameObject.SetActive(false);
+        popUp.SetActive(false);
 
     }
 
     private void Inventory_OnItemListChanged(object Sender, System.EventArgs e)
     {
         RefreshInventoryItems();
-        popUp.active = false;
+        popUp.SetActive(false);
     }
 
     private void RefreshInventoryItems()
@@ -62,7 +62,7 @@ public class UI_Inventory : MonoBehaviour
             if(x > 6)
             {
                 y--;
-                x = 0; 
+                x = 0;
             }
         }
     }

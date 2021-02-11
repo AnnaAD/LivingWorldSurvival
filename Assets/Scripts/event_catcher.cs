@@ -34,7 +34,7 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
 
     public void OnPointerEnter(PointerEventData evd)
     {
-        popUp.active = true;
+        popUp.SetActive(true);
         tracking = true;
         popUp.transform.Find("Text").GetComponent<Text>().text = item.itemType.ToString();
     }
@@ -51,7 +51,7 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
 
     public void OnPointerExit(PointerEventData evd)
     {
-        popUp.active = false;
+        popUp.SetActive(false);
         tracking = false;
     }
     public void OnPointerClick(PointerEventData evd)

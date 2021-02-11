@@ -24,7 +24,7 @@ public class ExchangeController : MonoBehaviour
         {
             toggleInventory = !toggleInventory;
             Vector3 p1 = GameObject.Find("Player").transform.position;
-            float distanceToObstacle = 0;
+            // float distanceToObstacle = 0;
             RaycastHit[] hit = Physics.SphereCastAll(p1, 4f, GameObject.Find("Player").transform.forward, 4f);
 
 

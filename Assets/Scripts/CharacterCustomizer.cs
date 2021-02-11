@@ -44,7 +44,7 @@ public class CharacterCustomizer : MonoBehaviour
         {
             Debug.Log(m.name + " " + m.color);
             GameObject s = Instantiate(slider, uiPanel.transform) as GameObject;
-            s.active = true;
+            s.SetActive(true);
             s.transform.position = s.transform.position + new Vector3(0,yOff, 0);
             s.GetComponent<ColorSelector>().setMaterial(m);
             s.GetComponent<ColorSelector>().setColor(m.color);

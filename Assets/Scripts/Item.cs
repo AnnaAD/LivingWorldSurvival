@@ -65,7 +65,7 @@ public class Item
                 return true;
             case Item.ItemType.Tent:
                 return ItemAssets.Instance.tentSprite;
-                return false;
+                // return false;  Unreachable?
         }
     }
 

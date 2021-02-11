@@ -16,11 +16,11 @@ public class PlayerAnimationSounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void PlayerFootstepSound() {
-        animationSoundPlayer.pitch = Random.RandomRange(.8f, 1.2f);
+        animationSoundPlayer.pitch = Random.Range(.8f, 1.2f);
     	animationSoundPlayer.Play();
     }
 }

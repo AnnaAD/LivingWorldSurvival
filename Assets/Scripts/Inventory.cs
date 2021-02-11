@@ -24,7 +24,7 @@ public class Inventory {
                 {
                     i.amount += 1;
                     return;
-                } 
+                }
             }
             itemList.Add(item);
 
@@ -43,7 +43,7 @@ public class Inventory {
         {
             foreach (Item i in itemList)
             {
-                Item itemToRemove = null;
+                // Item itemToRemove = null;
                 if (i.itemType == item.itemType)
                 {
                     i.amount -= 1;
@@ -54,7 +54,7 @@ public class Inventory {
                         return;
                     }
                 }
-            }    
+            }
         }
         else
         {
@@ -67,6 +67,6 @@ public class Inventory {
 
     public List<Item> GetItems()
     {
-        return itemList; 
+        return itemList;
     }
 }
