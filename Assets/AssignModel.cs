@@ -8,7 +8,7 @@ public class AssignModel : MonoBehaviour
     public Avatar[] playerAvatars;
     public int modelId;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Debug.Log(transform.position);
         GameObject model = Instantiate(playerModels[modelId],transform);
@@ -18,6 +18,9 @@ public class AssignModel : MonoBehaviour
         model.transform.GetChild(0).gameObject.AddComponent<RandomColor>();
 
         GetComponent<Animator>().avatar = playerAvatars[modelId];
+        GetComponent<Animator>().Rebind();
 
     }
+
+
 }
