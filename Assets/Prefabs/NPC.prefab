@@ -166,6 +166,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dec312661e774ccd84622d00b90a16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  npc: {fileID: 3670624195667666695}
+  NPCSentences:
+  - Enter
+  - Hi
+  - How are you?
+  message: 
+  index: 0
 --- !u!1001 &3670624197328728326
 PrefabInstance:
   m_ObjectHideFlags: 0

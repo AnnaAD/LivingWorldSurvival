@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1395567590648804126}
   - component: {fileID: 2427053265769669427}
   - component: {fileID: 2427053266859664385}
+  - component: {fileID: -2577584315796630361}
   m_Layer: 0
   m_Name: FlexibleModelNPC
   m_TagString: NPC
@@ -130,7 +131,7 @@ MonoBehaviour:
   npc: {fileID: 1395567590648804125}
   rotationSpeed: 200
   facing: 0
-  mode: find food
+  mode: idle
   enroute: 0
   closest: {fileID: 0}
   drop: {fileID: 0}
@@ -185,6 +186,26 @@ MonoBehaviour:
   - {fileID: 9000000, guid: 06d91dc006a4648a889d3666fa0e4133, type: 3}
   - {fileID: 9000000, guid: 0fc5c014b96f449eb9c610722cd1c807, type: 3}
   modelId: 7
+--- !u!114 &-2577584315796630361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2278650462669663431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dec312661e774ccd84622d00b90a16c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  npc: {fileID: 3670624195667666695, guid: 4a9de78b40fc2449bbf91051ebdf1354, type: 3}
+  NPCSentences:
+  - Enter
+  - Hi
+  - How are you?
+  message: 
+  index: 0
 --- !u!1001 &1395567589155513628
 PrefabInstance:
   m_ObjectHideFlags: 0
