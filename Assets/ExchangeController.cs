@@ -9,6 +9,10 @@ public class ExchangeController : MonoBehaviour
     private bool toggleInventory;
     private Inventory pInventory;
     private Inventory npcInventory;
+
+    public Inventory selectedFromPlayer;
+    public Inventory selectedFromNPC;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +40,7 @@ public class ExchangeController : MonoBehaviour
                 {
                     if(r.collider.tag == "NPC")
                     {
-                        Debug.Log("found NPC");
+                        Debug.Log("found NPC" + r.collider.name);
                         npcInventory = r.collider.gameObject.GetComponent<controlNPC>().inventory;
                     }
                 }
@@ -58,19 +62,16 @@ public class ExchangeController : MonoBehaviour
             {
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
-                pInventory = GameObject.Find("Player").GetComponent<PlayerPickup>().inventory;
 
                 npc_inventory.GetComponent<UI_Inventory>().setInventory(npcInventory);
-                player_inventory.GetComponent<UI_Inventory>().setInventory(pInventory);
             }
         }
         player_inventory.gameObject.SetActive(toggleInventory);
         npc_inventory.gameObject.SetActive(toggleInventory);
 
 
-
-
     }
+
     public void updateInventories(Inventory player_inv, Inventory npc_inv)
     {
         pInventory = player_inv;

@@ -54,8 +54,9 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
         popUp.SetActive(false);
         tracking = false;
     }
-    public void OnPointerClick(PointerEventData evd)
+    public virtual void OnPointerClick(PointerEventData evd)
     {
+        Debug.Log("what");
         if(evd.button == PointerEventData.InputButton.Right)
         {
             inventory.removeItem(item);
@@ -86,15 +87,15 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
     }
     public void OnPointerDown(PointerEventData evd)
     {
-        Debug.Log("OnPointerDown");
+        //Debug.Log("OnPointerDown");
     }
     public void OnPointerUp(PointerEventData evd)
     {
-        Debug.Log("OnPointerUp");
+        //Debug.Log("OnPointerUp");
     }
     public void OnSelect(BaseEventData evd)
     {
-        Debug.Log("OnSelect");
+        //Debug.Log("OnSelect");
     }
 
     Transform RecursiveFindChild(Transform parent, string childName)

@@ -6,6 +6,8 @@ public class PlayerPickup : MonoBehaviour
 {
     public Inventory inventory;
     [SerializeField] private UI_Inventory ui_inventory = null;
+    [SerializeField] private UI_Inventory exchange_inventory = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,13 +15,9 @@ public class PlayerPickup : MonoBehaviour
         if(ui_inventory != null)
         {
             ui_inventory.setInventory(inventory);
+            exchange_inventory.setInventory(inventory);
+
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void OnTriggerStay(Collider collision)
