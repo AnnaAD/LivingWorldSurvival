@@ -10,7 +10,6 @@ public class AssignModel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(transform.position);
         GameObject model = Instantiate(playerModels[modelId],transform);
 
         model.transform.position = transform.position;
