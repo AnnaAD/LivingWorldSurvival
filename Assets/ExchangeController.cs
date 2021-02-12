@@ -21,6 +21,7 @@ public class ExchangeController : MonoBehaviour
         npcInventory = null;
         npc_inventory.GetComponent<UI_Inventory>().type = InventoryType.Exchange;
         player_inventory.GetComponent<UI_Inventory>().type = InventoryType.Exchange;
+        pInventory = GameObject.Find("Player").GetComponent<PlayerPickup>().inventory;
         activeNpc = null;
     }
 
@@ -32,32 +33,10 @@ public class ExchangeController : MonoBehaviour
         {
             Debug.Log("trying to find npc");
             toggleInventory = !toggleInventory;
-            Vector3 p1 = GameObject.Find("Player").transform.position;
-            // float distanceToObstacle = 0;
-            RaycastHit[] hit = Physics.SphereCastAll(p1, 4f, GameObject.Find("Player").transform.forward, 5f);
-            Debug.Log(hit);
-            pInventory = GameObject.Find("Player").GetComponent<PlayerPickup>().inventory;
+            npcInventory = FindClosestNPC().GetComponent<controlNPC>().inventory;
+            activeNpc = FindClosestNPC();
 
-
-
-            npcInventory = null;
-            Debug.Log(toggleInventory);
-
-            if (toggleInventory && hit.Length > 0)
-            {
-                foreach ( RaycastHit r in hit)
-                {
-                    Debug.Log(r.collider.name);
-                    if (r.collider.tag == "NPC")
-                    { 
-                        Debug.Log("found NPC" + r.collider.name);
-                        npcInventory = r.collider.gameObject.GetComponent<controlNPC>().inventory;
-                        activeNpc = r.collider.gameObject;
-                    }
-                }
-            }
-
-            if(npcInventory == null)
+            if (npcInventory == null)
             {
                 toggleInventory = false;
             }
@@ -125,5 +104,25 @@ public class ExchangeController : MonoBehaviour
         player_inventory.GetComponent<UI_Inventory>().selectedItems.clearItems();
 
 
+    }
+
+    public GameObject FindClosestNPC()
+    {
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("NPC");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = GameObject.Find("Player").transform.position;
+        foreach (GameObject go in gos)
+        {
+            Vector3 diff = go.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+            }
+        }
+        return closest;
     }
 }
