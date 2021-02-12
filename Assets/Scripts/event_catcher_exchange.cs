@@ -20,14 +20,16 @@ public class event_catcher_exchange : event_catcher {
         {
             transform.GetComponent<Image>().color = Color.cyan;
             transform.Find("Image").GetComponent<Image>().color = Color.cyan;
-        } else
+            selectedItems.addItem(item);
+            Debug.Log(selectedItems);
+        }
+        else
         {
             transform.GetComponent<Image>().color = Color.white;
             transform.Find("Image").GetComponent<Image>().color = Color.white;
+            selectedItems.removeItem(item);
         }
 
     }
-   
 
-    
 }

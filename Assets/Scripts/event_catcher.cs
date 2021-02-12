@@ -12,16 +12,13 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
 {
 
     [SerializeField] private GameObject popUp;
-    private Item item;
+    public Item item;
     private Inventory inventory;
+    private InventoryType type;
+    public Inventory selectedItems;
+
 
     private bool tracking;
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -42,6 +39,11 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
     public void setItem(Item item)
     {
         this.item = item;
+    }
+
+    public void setType(InventoryType type)
+    {
+        this.type = type;
     }
 
     public void setInventory(Inventory inventory)
@@ -116,5 +118,9 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
             }
         }
         return null;
+    }
+    public void setSelectedItems(Inventory inventory)
+    {
+        this.selectedItems = inventory;
     }
 }

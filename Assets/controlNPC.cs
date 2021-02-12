@@ -170,4 +170,19 @@ public class controlNPC : MonoBehaviour
 
     }
 
+    private float getItemValue(Item i)
+    {
+        return 1;
+    }
+
+    public float evalItems(Inventory items)
+    {
+        float total = 0f;
+        foreach(Item i in items.GetItems())
+        {
+            total += getItemValue(i);
+        }
+        return total;
+    }
+
 }

@@ -9,6 +9,7 @@ public class ExchangeController : MonoBehaviour
     private bool toggleInventory;
     private Inventory pInventory;
     private Inventory npcInventory;
+    private GameObject activeNpc;
 
     public Inventory selectedFromPlayer;
     public Inventory selectedFromNPC;
@@ -18,6 +19,9 @@ public class ExchangeController : MonoBehaviour
     {
         toggleInventory = false;
         npcInventory = null;
+        npc_inventory.GetComponent<UI_Inventory>().type = InventoryType.Exchange;
+        player_inventory.GetComponent<UI_Inventory>().type = InventoryType.Exchange;
+        activeNpc = null;
     }
 
 
@@ -30,6 +34,7 @@ public class ExchangeController : MonoBehaviour
             Vector3 p1 = GameObject.Find("Player").transform.position;
             // float distanceToObstacle = 0;
             RaycastHit[] hit = Physics.SphereCastAll(p1, 4f, GameObject.Find("Player").transform.forward, 4f);
+            pInventory = GameObject.Find("Player").GetComponent<PlayerPickup>().inventory;
 
 
 
@@ -42,6 +47,7 @@ public class ExchangeController : MonoBehaviour
                     {
                         Debug.Log("found NPC" + r.collider.name);
                         npcInventory = r.collider.gameObject.GetComponent<controlNPC>().inventory;
+                        activeNpc = r.collider.gameObject;
                     }
                 }
             }
@@ -56,6 +62,7 @@ public class ExchangeController : MonoBehaviour
 
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
+                activeNpc = null;
 
             }
             else
@@ -70,6 +77,29 @@ public class ExchangeController : MonoBehaviour
         npc_inventory.gameObject.SetActive(toggleInventory);
 
 
+    }
+
+    public void SubmitTrade()
+    {
+        float npcVal = activeNpc.GetComponent<controlNPC>().evalItems(npc_inventory.GetComponent<UI_Inventory>().selectedItems);
+        float playerVal = activeNpc.GetComponent<controlNPC>().evalItems(player_inventory.GetComponent<UI_Inventory>().selectedItems);
+
+        Debug.Log(player_inventory);
+
+        if(playerVal > npcVal)
+        {
+            foreach(Item i in player_inventory.GetComponent<UI_Inventory>().selectedItems.GetItems())
+            {
+                npcInventory.addItem(i);
+                pInventory.removeItem(i);
+            }
+
+            foreach (Item i in npc_inventory.GetComponent<UI_Inventory>().selectedItems.GetItems())
+            {
+                npcInventory.removeItem(i);
+                pInventory.addItem(i);
+            }
+        }
     }
 
     public void updateInventories(Inventory player_inv, Inventory npc_inv)

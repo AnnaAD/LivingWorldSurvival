@@ -9,6 +9,8 @@ public class UI_Inventory : MonoBehaviour
     private Transform itemSlot;
     private Transform itemContainer;
     [SerializeField] private GameObject popUp;
+    public InventoryType type = InventoryType.Default;
+    public Inventory selectedItems;
 
     public void setInventory(Inventory inventory)
     {
@@ -24,6 +26,7 @@ public class UI_Inventory : MonoBehaviour
         this.itemSlot = itemContainer.Find("ItemSlot");
         itemSlot.gameObject.SetActive(false);
         popUp.SetActive(false);
+        selectedItems = new Inventory();
 
     }
 
@@ -49,11 +52,15 @@ public class UI_Inventory : MonoBehaviour
             RectTransform itemSlotRectTransform = Instantiate(itemSlot, itemContainer).GetComponent<RectTransform>();
             itemSlotRectTransform.gameObject.SetActive(true);
             itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
+            itemSlotRectTransform.GetComponent<event_catcher>().setType(type);
             itemSlotRectTransform.GetComponent<event_catcher>().setItem(i);
             itemSlotRectTransform.GetComponent<event_catcher>().setInventory(inventory);
+            itemSlotRectTransform.GetComponent<event_catcher>().setSelectedItems(selectedItems);
+
             Image image = itemSlotRectTransform.Find("Image").GetComponent<Image>();
             image.sprite = i.getSprite();
             Text text = itemSlotRectTransform.Find("Text").GetComponent<Text>();
+            Debug.Log(i.amount);
             if(i.amount > 1)
             {
                 text.text = i.amount.ToString();
@@ -66,4 +73,10 @@ public class UI_Inventory : MonoBehaviour
             }
         }
     }
+}
+
+public enum InventoryType
+{
+    Exchange,
+    Default
 }
