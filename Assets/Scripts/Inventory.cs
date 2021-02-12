@@ -22,7 +22,9 @@ public class Inventory {
             {
                 if (i.itemType == item.itemType)
                 {
-                    i.amount += 1;
+                    i.amount += item.amount;
+                    Debug.Log("added item");
+                    OnItemListChanged?.Invoke(this, EventArgs.Empty);
                     return;
                 }
             }
@@ -46,7 +48,7 @@ public class Inventory {
                 // Item itemToRemove = null;
                 if (i.itemType == item.itemType)
                 {
-                    i.amount -= 1;
+                    i.amount -= item.amount;
                     if (i.amount <= 0)
                     {
                         itemList.Remove(item);
@@ -62,7 +64,6 @@ public class Inventory {
         }
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
 
-        Debug.Log(itemList);
     }
 
     public List<Item> GetItems()

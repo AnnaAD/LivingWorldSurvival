@@ -12,16 +12,13 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
 {
 
     [SerializeField] private GameObject popUp;
-    private Item item;
+    public Item item;
     private Inventory inventory;
+    private InventoryType type;
+    public Inventory selectedItems;
+
 
     private bool tracking;
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -44,6 +41,11 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
         this.item = item;
     }
 
+    public void setType(InventoryType type)
+    {
+        this.type = type;
+    }
+
     public void setInventory(Inventory inventory)
     {
         this.inventory = inventory;
@@ -54,8 +56,9 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
         popUp.SetActive(false);
         tracking = false;
     }
-    public void OnPointerClick(PointerEventData evd)
+    public virtual void OnPointerClick(PointerEventData evd)
     {
+        Debug.Log("what");
         if(evd.button == PointerEventData.InputButton.Right)
         {
             inventory.removeItem(item);
@@ -86,15 +89,15 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
     }
     public void OnPointerDown(PointerEventData evd)
     {
-        Debug.Log("OnPointerDown");
+        //Debug.Log("OnPointerDown");
     }
     public void OnPointerUp(PointerEventData evd)
     {
-        Debug.Log("OnPointerUp");
+        //Debug.Log("OnPointerUp");
     }
     public void OnSelect(BaseEventData evd)
     {
-        Debug.Log("OnSelect");
+        //Debug.Log("OnSelect");
     }
 
     Transform RecursiveFindChild(Transform parent, string childName)
@@ -115,5 +118,9 @@ public class event_catcher : MonoBehaviour, IPointerClickHandler,
             }
         }
         return null;
+    }
+    public void setSelectedItems(Inventory inventory)
+    {
+        this.selectedItems = inventory;
     }
 }
