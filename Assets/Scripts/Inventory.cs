@@ -23,6 +23,7 @@ public class Inventory {
                 if (i.itemType == item.itemType)
                 {
                     i.amount += item.amount;
+                    OnItemListChanged?.Invoke(this, EventArgs.Empty);
                     return;
                 }
             }
@@ -62,7 +63,6 @@ public class Inventory {
         }
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
 
-        Debug.Log(itemList);
     }
 
     public List<Item> GetItems()

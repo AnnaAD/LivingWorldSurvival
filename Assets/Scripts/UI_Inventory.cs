@@ -60,7 +60,6 @@ public class UI_Inventory : MonoBehaviour
             Image image = itemSlotRectTransform.Find("Image").GetComponent<Image>();
             image.sprite = i.getSprite();
             Text text = itemSlotRectTransform.Find("Text").GetComponent<Text>();
-            Debug.Log(i.amount);
             if(i.amount > 1)
             {
                 text.text = i.amount.ToString();
