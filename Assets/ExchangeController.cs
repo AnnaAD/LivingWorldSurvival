@@ -35,17 +35,20 @@ public class ExchangeController : MonoBehaviour
             Vector3 p1 = GameObject.Find("Player").transform.position;
             // float distanceToObstacle = 0;
             RaycastHit[] hit = Physics.SphereCastAll(p1, 4f, GameObject.Find("Player").transform.forward, 5f);
+            Debug.Log(hit);
             pInventory = GameObject.Find("Player").GetComponent<PlayerPickup>().inventory;
 
 
 
             npcInventory = null;
+            Debug.Log(toggleInventory);
 
             if (toggleInventory && hit.Length > 0)
             {
                 foreach ( RaycastHit r in hit)
                 {
-                    if(r.collider.tag == "NPC")
+                    Debug.Log(r.collider.name);
+                    if (r.collider.tag == "NPC")
                     { 
                         Debug.Log("found NPC" + r.collider.name);
                         npcInventory = r.collider.gameObject.GetComponent<controlNPC>().inventory;
@@ -90,22 +93,37 @@ public class ExchangeController : MonoBehaviour
 
         if(playerVal > npcVal)
         {
-            foreach(Item i in player_inventory.GetComponent<UI_Inventory>().selectedItems.GetItems())
+            foreach (Item i in npcInventory.GetItems())
             {
                 Debug.Log(i.itemType + " " + i.amount);
-                npcInventory.addItem(i);
-                pInventory.removeItem(i);
+            }
+            foreach (Item i in player_inventory.GetComponent<UI_Inventory>().selectedItems.GetItems())
+            {
+         
+                npcInventory.addItem(new Item(i.itemType, i.amount));
+            }
+            foreach (Item i in npc_inventory.GetComponent<UI_Inventory>().selectedItems.GetItems())
+            {
+            
+                pInventory.addItem(new Item(i.itemType, i.amount));
+            }
+
+            foreach (Item i in player_inventory.GetComponent<UI_Inventory>().selectedItems.GetItems())
+            {
+                
+                pInventory.removeItem(new Item(i.itemType, i.amount));
             }
 
             foreach (Item i in npc_inventory.GetComponent<UI_Inventory>().selectedItems.GetItems())
             {
-                Debug.Log(i.itemType + " " + i.amount);
-                npcInventory.removeItem(i);
-                pInventory.addItem(i);
+               
+                npcInventory.removeItem(new Item(i.itemType, i.amount));
             }
-        }
-        npc_inventory.GetComponent<UI_Inventory>().selectedItems = new Inventory();
-        player_inventory.GetComponent<UI_Inventory>().selectedItems = new Inventory();
+           
+       }
+        npc_inventory.GetComponent<UI_Inventory>().selectedItems.clearItems();
+        player_inventory.GetComponent<UI_Inventory>().selectedItems.clearItems();
+
 
     }
 }
