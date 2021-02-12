@@ -23,6 +23,7 @@ public class Inventory {
                 if (i.itemType == item.itemType)
                 {
                     i.amount += item.amount;
+                    Debug.Log("added item");
                     OnItemListChanged?.Invoke(this, EventArgs.Empty);
                     return;
                 }
