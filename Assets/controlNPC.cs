@@ -16,10 +16,13 @@ public class controlNPC : MonoBehaviour
     public Rigidbody npc;
     public float rotationSpeed = 200f;
     public bool facing = false;
-    public string mode;
+
     public bool enroute;
     public  GameObject closest = null;
+    public GameObject clone;
     public Inventory inventory;
+    public Item food;
+    PlayerStats script;
 
     [SerializeField] private GameObject drop;
 
@@ -31,17 +34,22 @@ public class controlNPC : MonoBehaviour
       sleepTimer = 0;
       inventory = new Inventory();
       enroute = false;
+      script= player.GetComponent<PlayerStats>();
+      food = new Item { itemType = Item.ItemType.Mushroom, amount = 3 };
+      script.hunger = 3;
+      inventory.addItem(food);
     }
 
     // Update is called once per frame
     void Update()
     {
-      if(mode == "idle"){
-          IdleWalk();
-      }else if(mode == "find food"){
-          FindFood();
-      }else if(mode == "sleep"){
-          GoToSleep();
+      Debug.Log(inventory.GetFoodCount());
+      if(script.hunger < 5){
+        EatFood();
+      }else if(script.tired < 5){
+        GoToSleep();
+      }else{
+        IdleWalk();
       }
 
     }
@@ -108,7 +116,7 @@ public class controlNPC : MonoBehaviour
         animator.SetTrigger("pick up");
         agent.isStopped = true;
         enroute = false;
-        mode = "idle";
+        // mode = "idle";
         timer = -5;
       }
 
@@ -119,11 +127,17 @@ public class controlNPC : MonoBehaviour
       Destroy(closest);
     }
 
+    void EatFood(){
+      script.hunger = 10;
+      Item remove = new Item { itemType = Item.ItemType.Mushroom, amount = 1 };
+      inventory.removeItem(remove);
+    }
+
     void GoToSleep(){
       if(sleepTimer == 0){
         animator.SetBool("walk", false);
         animator.SetBool("sleep", true);
-        Instantiate(ItemAssets.Instance.deployedTent, transform.position, ItemAssets.Instance.deployedTent.transform.rotation);
+        clone = (GameObject)Instantiate(ItemAssets.Instance.deployedTent, transform.position, ItemAssets.Instance.deployedTent.transform.rotation);
       }
 
       sleepTimer += Time.deltaTime;
@@ -131,7 +145,9 @@ public class controlNPC : MonoBehaviour
       if(sleepTimer > 10){
         animator.SetBool("sleep", false);
         sleepTimer = 0;
-        mode = "idle";
+        Destroy (clone, 1.0f);
+        script.tired = 10;
+        // mode = "idle";
       }
     }
 

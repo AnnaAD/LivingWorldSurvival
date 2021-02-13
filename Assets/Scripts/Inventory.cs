@@ -70,4 +70,14 @@ public class Inventory {
     {
         return itemList;
     }
+
+    public int GetFoodCount()
+    {
+      foreach (Item i in itemList){
+        if(i.itemType == Item.ItemType.Mushroom){
+          return i.amount;
+        }
+      }
+      return 0;
+    }
 }
