@@ -9,7 +9,7 @@ public class Pickup : MonoBehaviour
 
     private void Start()
     {
-        item = new Item { itemType = itemType, amount = 1 };
+        item = new Item (itemType,1);
     }
 
     public Item getItem()

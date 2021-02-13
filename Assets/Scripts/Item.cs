@@ -18,6 +18,12 @@ public class Item
     public ItemType itemType;
     public int amount;
 
+    public Item(ItemType iT, int amount)
+    {
+        this.itemType = iT;
+        this.amount = amount;
+    }
+
 
     public Sprite getSprite()
     {
