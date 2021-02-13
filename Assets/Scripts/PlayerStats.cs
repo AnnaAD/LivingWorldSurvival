@@ -61,9 +61,9 @@ public class PlayerStats : MonoBehaviour
                 }
             }
         }
-        
 
-        
+
+
 
         if(tired > 10) { tired = 10; }
         if(hunger > 10) { hunger = 10; }

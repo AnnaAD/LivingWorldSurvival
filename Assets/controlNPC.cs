@@ -14,7 +14,7 @@ public class controlNPC : MonoBehaviour
 
     public Rigidbody player;
     public Rigidbody npc;
-    public float rotationSpeed = 200f;
+    // public float rotationSpeed = 200f;
     public bool facing = false;
 
     public bool enroute;
@@ -22,7 +22,7 @@ public class controlNPC : MonoBehaviour
     public GameObject clone;
     public Inventory inventory;
     public Item food;
-    PlayerStats script;
+    public int food_count;
 
     [SerializeField] private GameObject drop;
 
@@ -34,19 +34,20 @@ public class controlNPC : MonoBehaviour
       sleepTimer = 0;
       inventory = new Inventory();
       enroute = false;
-      script= player.GetComponent<PlayerStats>();
-      food = new Item { itemType = Item.ItemType.Mushroom, amount = 3 };
-      script.hunger = 3;
+      food = new Item(Item.ItemType.Mushroom, 3);
       inventory.addItem(food);
+      food_count = inventory.GetFoodCount();
+      agent.GetComponent<PlayerStats>().hunger = 5;
     }
 
     // Update is called once per frame
     void Update()
     {
-      Debug.Log(inventory.GetFoodCount());
-      if(script.hunger < 5){
+      if(food_count < 3){
+        FindFood();
+      }else if( agent.GetComponent<PlayerStats>().hunger < 5){
         EatFood();
-      }else if(script.tired < 5){
+      }else if( agent.GetComponent<PlayerStats>().tired < 5){
         GoToSleep();
       }else{
         IdleWalk();
@@ -116,6 +117,7 @@ public class controlNPC : MonoBehaviour
         animator.SetTrigger("pick up");
         agent.isStopped = true;
         enroute = false;
+        food_count += 3;
         // mode = "idle";
         timer = -5;
       }
@@ -128,9 +130,10 @@ public class controlNPC : MonoBehaviour
     }
 
     void EatFood(){
-      script.hunger = 10;
-      Item remove = new Item { itemType = Item.ItemType.Mushroom, amount = 1 };
+      agent.GetComponent<PlayerStats>().hunger = 10;
+      Item remove = new Item(Item.ItemType.Mushroom, 1);
       inventory.removeItem(remove);
+      food_count -= 1;
     }
 
     void GoToSleep(){
@@ -146,16 +149,16 @@ public class controlNPC : MonoBehaviour
         animator.SetBool("sleep", false);
         sleepTimer = 0;
         Destroy (clone, 1.0f);
-        script.tired = 10;
-        // mode = "idle";
+
+        agent.GetComponent<PlayerStats>().tired = 10;
       }
     }
 
-    public void RotateTowards(Transform target) {
-            Vector3 direction = (target.position - transform.position).normalized;
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
-     }
+    // public void RotateTowards(Transform target) {
+    //         Vector3 direction = (target.position - transform.position).normalized;
+    //         Quaternion lookRotation = Quaternion.LookRotation(direction);
+    //         transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+    //  }
 
     public Vector3 GetRandomPoint(Vector3 center, float maxDistance) {
         // Get Random Point inside Sphere which position is center, radius is maxDistance
