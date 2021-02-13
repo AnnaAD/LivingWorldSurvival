@@ -53,7 +53,7 @@ public class UI_Inventory : MonoBehaviour
             itemSlotRectTransform.gameObject.SetActive(true);
             itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
             itemSlotRectTransform.GetComponent<event_catcher>().setType(type);
-            itemSlotRectTransform.GetComponent<event_catcher>().setItem(i);
+            itemSlotRectTransform.GetComponent<event_catcher>().setItem(new Item(i.itemType, i.amount));
             itemSlotRectTransform.GetComponent<event_catcher>().setInventory(inventory);
             itemSlotRectTransform.GetComponent<event_catcher>().setSelectedItems(selectedItems);
 
