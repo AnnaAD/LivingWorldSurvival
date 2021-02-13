@@ -191,7 +191,7 @@ public class controlNPC : MonoBehaviour
 
     private float getItemValue(Item i)
     {
-        return 1;
+        return i.amount;
     }
 
     public float evalItems(Inventory items)
