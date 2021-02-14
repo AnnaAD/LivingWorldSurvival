@@ -162,7 +162,6 @@ public class controlNPC : MonoBehaviour
 
     public Vector3 GetRandomPoint(Vector3 center, float maxDistance) {
         // Get Random Point inside Sphere which position is center, radius is maxDistance
-        // Vector3 randomPos = Random.insideUnitSphere * maxDistance + center;
         Vector3 randomPos = new Vector3(center.x + Random.Range(-30.0f, 30.0f), center.y, center.z + Random.Range(-30.0f, 30.0f));
         UnityEngine.AI.NavMeshHit hit; // NavMesh Sampling Info Container
         // from randomPos find a nearest point on NavMesh surface in range of maxDistance
